@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/Jacox98/n8n-nodes-ramsonware-live.git"
   },
   "engines": {
     "node": ">=20.15"
@@ -32,7 +32,7 @@
   "files": [
     "dist"
   ],
-  "icon": "dist/nodes/RansomwareLive/ransomwareLive.png",
+  "icon": "dist/nodes/RansomwareLive/ransomwareLive.svg",
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
@@ -54,5 +54,8 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/Jacox98/n8n-nodes-ramsonware-live/issues"
   }
 }

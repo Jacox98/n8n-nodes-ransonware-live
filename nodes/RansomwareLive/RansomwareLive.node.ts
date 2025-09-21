@@ -42,18 +42,18 @@ export class RansomwareLive implements INodeType {
 				type: 'options',
 				noDataExpression: true,
 				options: [
-					{ name: '8-K Filings', value: 'forms8k' },
-					{ name: 'CSIRT', value: 'csirt' },
-					{ name: 'Groups', value: 'groups' },
-					{ name: 'IOCs', value: 'iocs' },
-					{ name: 'Negotiations', value: 'negotiations' },
-					{ name: 'Press', value: 'press' },
-					{ name: 'Ransomnotes', value: 'ransomnotes' },
-					{ name: 'Sectors', value: 'sectors' },
-					{ name: 'Statistics', value: 'stats' },
-					{ name: 'Validate', value: 'validate' },
-					{ name: 'Victims', value: 'victims' },
-					{ name: 'YARA', value: 'yara' },
+					{ name: '8-K Filing', value: 'forms8k' },
+					{ name: 'CSIRT Entry', value: 'csirt' },
+					{ name: 'Group', value: 'groups' },
+					{ name: 'IOC', value: 'iocs' },
+					{ name: 'Negotiation', value: 'negotiations' },
+					{ name: 'Press Article', value: 'press' },
+					{ name: 'Ransomnote', value: 'ransomnotes' },
+					{ name: 'Sector', value: 'sectors' },
+					{ name: 'Statistic', value: 'stats' },
+					{ name: 'Validation', value: 'validate' },
+					{ name: 'Victim', value: 'victims' },
+					{ name: 'YARA Rule', value: 'yara' },
 				],
 				default: 'victims',
 			},
@@ -351,3 +351,4 @@ export class RansomwareLive implements INodeType {
 		return [returnData];
 	}
 }
+

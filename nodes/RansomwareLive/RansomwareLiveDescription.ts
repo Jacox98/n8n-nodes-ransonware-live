@@ -81,7 +81,7 @@ export const ransomwareLiveOperations: INodeProperties[] = [
 			{
 				name: 'List IOC Groups',
 				value: 'list',
-				action: 'List IOC-bearing groups',
+				action: 'List IOC bearing groups',
 				description: 'Returns ransomware groups that have indicators of compromise',
 			},
 			{
@@ -107,7 +107,7 @@ export const ransomwareLiveOperations: INodeProperties[] = [
 			{
 				name: 'List Groups',
 				value: 'listGroups',
-				action: 'List negotiation-enabled groups',
+				action: 'List negotiation enabled groups',
 				description: 'Lists ransomware groups with negotiation chats',
 			},
 			{
@@ -367,7 +367,7 @@ export const ransomwareLiveFields: INodeProperties[] = [
 		name: 'item105',
 		type: 'boolean',
 		default: true,
-		description: 'Filter Item 1.05 filings (true/false, default true)',
+		description: 'Whether to include Item 1.05 filings (true/false, default true)',
 		displayOptions: {
 			show: {
 				resource: ['forms8k'],
@@ -380,7 +380,7 @@ export const ransomwareLiveFields: INodeProperties[] = [
 		name: 'item801',
 		type: 'boolean',
 		default: true,
-		description: 'Filter Item 8.01 filings (true/false, default true)',
+		description: 'Whether to include Item 8.01 filings (true/false, default true)',
 		displayOptions: {
 			show: {
 				resource: ['forms8k'],
@@ -695,3 +695,5 @@ export const ransomwareLiveFields: INodeProperties[] = [
 		},
 	},
 ];
+
+

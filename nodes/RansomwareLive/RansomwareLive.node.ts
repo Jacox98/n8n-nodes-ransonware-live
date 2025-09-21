@@ -18,6 +18,7 @@ export class RansomwareLive implements INodeType {
 		version: 1,
 		description: 'Interact with the ransomware.live API',
 		subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
+		icon: 'file:ransomwareLive.png',
 		defaults: {
 			name: 'Ransomware.live',
 		},

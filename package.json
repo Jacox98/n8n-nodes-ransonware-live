@@ -1,19 +1,21 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-ransomware-live",
   "version": "0.1.0",
-  "description": "",
+  "description": "Community nodes for interacting with the ransomware.live API.",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "ransomware",
+    "threat-intelligence"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://www.ransomware.live",
   "author": {
     "name": "",
     "email": ""
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": ""
   },
   "engines": {
     "node": ">=20.15"
@@ -33,12 +35,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/RansomwareLiveApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/RansomwareLive/RansomwareLive.node.js"
     ]
   },
   "devDependencies": {

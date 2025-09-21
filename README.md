@@ -1,48 +1,55 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n Ransomware.live Nodes
 
-# n8n-nodes-starter
+Custom n8n node for exploring the [ransomware.live](https://www.ransomware.live) intelligence API. The node wraps the public PRO endpoints and exposes friendly parameters so you can query victims, negotiations, indicators of compromise, press coverage, and more without hand-crafting HTTP requests.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](https://n8n.io). It includes the node linter and other dependencies.
+## Features
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+- Authenticates with the ransomware.live X-API-KEY header via a dedicated credential.
+- Supports all documented resources: victims, groups, negotiations, IOCs, YARA rules, press, ransomnotes, sectors, 8-K filings, CSIRT directory, platform statistics, and key validation.
+- Maps Swagger parameters to n8n fields (tickers, CIK, dates, countries, chat IDs, IOC types, etc.) and converts responses to JSON items ready for downstream nodes.
+- Gracefully handles both array and object responses and surfaces raw payloads when the API returns non-JSON data.
 
-If you would like your node to be available on n8n cloud you can also [submit your node for verification](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/).
+## Getting Started
 
-## Prerequisites
-
-You need the following installed on your development machine:
-
-* [git](https://git-scm.com/downloads)
-* Node.js and npm. Minimum version Node 20. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  npm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
-
-## Using this starter
-
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
-
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
+1. Install dependencies:
+   ```bash
+   npm install
    ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
+2. Build or watch the project while developing:
+   ```bash
+   npm run build
+   # or
+   npm run dev
    ```
-3. Run `npm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `npm run lint` to check for errors or `npm run lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+3. Link the package into your n8n instance (or copy the compiled files) following the [n8n community nodes guide](https://docs.n8n.io/integrations/community-nodes/publish/installation/).
 
-## More information
+## Credentials
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+Create a new credential of type `Ransomware.live API` inside n8n and paste the API key obtained from [my.ransomware.live](https://my.ransomware.live). You can override the base URL if you are targeting a self-hosted deployment.
+
+The credential test hits the `/validate` endpoint to confirm the key is active.
+
+## Supported Operations
+
+- **Victims**: list, recent, search, get (filters for group, sector, country, dates, query, victim ID).
+- **Groups**: list all groups or fetch detailed information for one group.
+- **IOCs**: list IOC-enabled groups or fetch IOCs for a specific group with optional type filtering.
+- **Negotiations**: list groups with chats, list negotiation metadata for a group, or fetch full chat transcripts.
+- **Press**: retrieve the entire enriched press feed or just the most recent entries, optionally filtered by country.
+- **Ransomnotes**: discover groups with ransom notes, list note filenames for a group, or load an individual note.
+- **8-K Filings**: pull Item 1.05 / 8.01 cybersecurity filings with ticker, CIK, and date filters.
+- **CSIRT Directory**: fetch national CSIRT/CERT contacts by country code.
+- **Sectors**: list victim sectors with incident counts.
+- **YARA Rules**: list YARA-enabled groups or fetch rules for a group.
+- **Statistics**: retrieve global stats for victims, groups, press entries, and last update time.
+- **Validate**: confirm the configured API key is still valid.
+
+## Usage Tips
+
+- Enable "Continue On Fail" in the node options when you want the workflow to proceed even if the API returns errors; the node will emit an item with the error message.
+- Combine the node with `Split In Batches` or `Function` nodes to iterate victims and enrich data in parallel workflows.
+- Respect ransomware.live fair-use guidelines—avoid unnecessary polling or extremely broad queries in tight loops.
 
 ## License
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+MIT

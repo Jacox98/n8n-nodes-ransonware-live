@@ -24,7 +24,7 @@ export class RansomwareLiveApi implements ICredentialType {
 			displayName: 'Base URL',
 			name: 'baseUrl',
 			type: 'string',
-			default: 'https://api.ransomware.live',
+			default: 'https://api-pro.ransomware.live',
 			description: 'Override the API base URL if you use a private instance',
 		},
 	];
@@ -45,3 +45,4 @@ export class RansomwareLiveApi implements ICredentialType {
 		},
 	};
 }
+

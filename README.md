@@ -25,7 +25,7 @@ Custom n8n node for exploring the [ransomware.live](https://www.ransomware.live)
 
 ## Credentials
 
-Create a new credential of type `Ransomware.live API` inside n8n and paste the API key obtained from [my.ransomware.live](https://my.ransomware.live). You can override the base URL if you are targeting a self-hosted deployment.
+Create a new credential of type `Ransomware.live API` inside n8n and paste the API key obtained from [my.ransomware.live](https://my.ransomware.live). The credential defaults to https://api-pro.ransomware.live; override the base URL only if you run a self-hosted mirror.
 
 The credential test hits the `/validate` endpoint to confirm the key is active.
 
@@ -48,8 +48,10 @@ The credential test hits the `/validate` endpoint to confirm the key is active.
 
 - Enable "Continue On Fail" in the node options when you want the workflow to proceed even if the API returns errors; the node will emit an item with the error message.
 - Combine the node with `Split In Batches` or `Function` nodes to iterate victims and enrich data in parallel workflows.
-- Respect ransomware.live fair-use guidelines—avoid unnecessary polling or extremely broad queries in tight loops.
+- Respect ransomware.live fair-use guidelines: avoid unnecessary polling or extremely broad queries in tight loops.
 
 ## License
 
 MIT
+
+

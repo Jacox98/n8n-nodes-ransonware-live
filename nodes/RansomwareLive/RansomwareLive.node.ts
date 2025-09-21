@@ -67,7 +67,7 @@ export class RansomwareLive implements INodeType {
 		const returnData: INodeExecutionData[] = [];
 
 		const credentials = await this.getCredentials('ransomwareLiveApi');
-		const baseURL = (credentials?.baseUrl as string) || 'https://api.ransomware.live';
+		const baseURL = (credentials?.baseUrl as string) || 'https://api-pro.ransomware.live';
 
 		for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
 			try {
@@ -351,4 +351,5 @@ export class RansomwareLive implements INodeType {
 		return [returnData];
 	}
 }
+
 

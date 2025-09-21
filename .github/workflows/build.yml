@@ -1,8 +1,6 @@
 name: Build and Publish
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -11,7 +9,6 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: github.event_name == "workflow_dispatch" || (github.event_name == "release" && github.event.action == "published")
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
